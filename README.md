@@ -2,7 +2,11 @@
 
 *Forked from [layou233/NeverIdle](https://github.com/layou233/NeverIdle) and [M3chD09](https://github.com/M3chD09/NeverIdle) (docker support)*
 
-<span style="color:red">**Oracle Cloud Cleaning Up Idle Compute Instances & How to Keep it**</span> (based on this [article](https://blog.51sec.org/2023/02/oracle-cloud-cleaning-up-idle-compute.html))
+```diff
+- Oracle Cloud Cleaning Up Idle Compute Instances & How to Keep it
+```
+
+## Based on this [article](https://blog.51sec.org/2023/02/oracle-cloud-cleaning-up-idle-compute.html)
 
 This program is casually written, and the introduction below is also casually written. If you don't like it, don't touch it.
 
