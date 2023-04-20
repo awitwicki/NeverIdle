@@ -1,48 +1,51 @@
 # NeverIdle
 
-*我喜欢你，但别删我机，好么？*
+*Forked from [layou233/NeverIdle](https://github.com/layou233/NeverIdle) and [M3chD09](https://github.com/M3chD09/NeverIdle) (docker support)*
 
-本程序随手写的，下面介绍也是随心写的，不喜勿碰。
+<span style="color:red">**Oracle Cloud Cleaning Up Idle Compute Instances & How to Keep it**</span> (based on this [article](https://blog.51sec.org/2023/02/oracle-cloud-cleaning-up-idle-compute.html))
 
-## 一键脚本 One click to go
+This program is casually written, and the introduction below is also casually written. If you don't like it, don't touch it.
+
+## One-click script One click to go
 
 ```shell
 bash <(curl -s -L https://gist.githubusercontent.com/Ansen/e45320205faf5786d3282ac880f20bab/raw/onekey-NeverIdle.sh)
 ```
 
-MJJ 们估计会喜欢这个。感谢脚本作者 @Ansen
+MJJ probably likes this. Thanks to script author @Ansen
 
-默认执行下面的命令，当然肯定没法覆盖所有的需求。  
-比如 AMD 没有 2G 内存，也没有浪费内存的要求。  
-所以依然建议各位自己安装，也是非常便捷迅速的。
+By default, the following commands are executed, but it is certainly impossible to cover all needs.
+For example, AMD does not have 2G memory and does not have the requirement to waste memory.
+So it is still recommended that you install it yourself, which is also very convenient and fast.
 
 ## Usage
 
-从 Release 下载可执行文件。注意区分 amd64 和 arm64。
+Download the executable file from Release. Note the distinction between amd64 and arm64.
 
-在服务器上启动一个 screen，然后执行本程序，用法自己搜。
+Start a screen on the server, then run this program, search for usage yourself.
 
-命令参数：
+Command parameters:
 
 ```shell
 ./NeverIdle -c 2h -m 2 -n 4h
 ```
 
-其中：
+Among them:
 
--c 指启用 CPU 定期浪费，后面跟随每次浪费的间隔时间。  
-如每 12 小时 23 分钟 34 秒浪费一次，则为 12h23m34s。按照格式填。
+-c indicates that CPU is periodically wasted, followed by the interval between each waste.
+For example, if it is wasted once every 12 hours 23 minutes and 34 seconds, it is 12h23m34s. Fill in according to the format.
 
--m 指启用浪费的内存量，后面是一个数字，单位为 GiB。  
-启动后会占用对应量的内存，并且保持不会释放，直到手动杀死进程。
+-m indicates the amount of memory wasted, followed by a number, in GiB.
+After starting, it will occupy the corresponding amount of memory and will not be released until the process is manually killed.
 
--n 指启用网络定期浪费，后面跟随每次浪费的间隔时间。  
-格式同 CPU。会定期执行一次 Ookla Speed Test（还会输出结果哦！）
+-n indicates that network is periodically wasted, followed by the interval between each waste.
+The format is the same as CPU. It will periodically perform an Ookla Speed Test (and output the results!)
 
--t 指设置网络定期浪费的并发连接数。 
-默认为10个，值越大消耗的资源越多，一般情况不需要更改。
+-t specifies the number of concurrent connections for periodic network waste.
+The default is 10, the higher the value, the more resources consumed, and generally there is no need to change.
 
-*启动该程序后即立刻执行一次你配置的所有功能，可以观察效果。*
+*After starting this program, all the functions you configured will be executed immediately, and you can observe the effect. *
+
 
 ## Docker
 
@@ -61,4 +64,12 @@ services:
     restart: always
     volumes:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
+```
+
+## Run this repo in Docker Compose
+
+```shell
+git clone https://github.com/awitwicki/NeverIdle.git
+cd NeverIdle
+docker-compose up -d
 ```
